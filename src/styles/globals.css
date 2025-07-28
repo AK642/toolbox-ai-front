@@ -1,0 +1,126 @@
+@import './variables.css';
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.15;
+  background:
+    linear-gradient(45deg, transparent 0 98%, var(--color-primary) 98% 100%),
+    linear-gradient(-45deg, transparent 0 95%, var(--color-secondary) 95% 100%),
+    linear-gradient(135deg, transparent 0 92%, var(--color-border) 92% 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  background: rgba(24,25,42,0.8); /* same as body background with transparency */
+  box-shadow: 0 2px 8px var(--color-shadow);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2rem 2.5rem;
+}
+
+.theme-toggle {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--color-card-hover);
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  transition: background 0.2s, box-shadow 0.2s;
+  position: relative;
+  max-width: 200px;
+}
+
+.card:hover {
+  background: var(--color-card-hover);
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.card-badge {
+  padding: 2px 5px;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-description {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .app-header, .card-grid {
+    padding: 1rem;
+  }
+  .card {
+    padding: 1.2rem 0.8rem 1rem 0.8rem;
+  }
+} 
